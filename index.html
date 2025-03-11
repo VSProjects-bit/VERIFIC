@@ -3,77 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Cuentas</title>
+    <title>Iniciar sesión / Registrarse</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script type="module" src="firebaseConfig.js"></script>
-    <script type="module">
-        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
-
-        document.addEventListener("DOMContentLoaded", () => {
-            const db = getDatabase();
-            const cuentasRef = ref(db, 'cuentas');
-            const cuentasLista = document.getElementById("cuentasLista");
-            
-            onValue(cuentasRef, (snapshot) => {
-                cuentasLista.innerHTML = "";
-                snapshot.forEach((childSnapshot) => {
-                    const data = childSnapshot.val();
-                    const cuentaDiv = document.createElement("div");
-                    cuentaDiv.textContent = `Número: ${data.numero}, Usuario: ${data.usuario}`;
-                    cuentaDiv.classList.add("bg-gray-800", "text-white", "p-2", "rounded", "mb-2");
-                    cuentasLista.appendChild(cuentaDiv);
-                });
-            });
-        });
-    </script>
+    
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore.js"></script>
+    
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        .gold {
+            color: #d4af37;
         }
-        .retiro-button {
-            padding: 12px;
-            border: none;
-            border-radius: 8px;
-            background: #000000;
-            color: #FFD700;
-            font-size: 18px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: 0.3s;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+        .gold-bg {
+            background-color: #d4af37;
         }
-        .retiro-button:hover {
-            background: #FFD700;
-            color: #000000;
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+        .gold-border {
+            border-color: #d4af37;
         }
-        .cuentas-container {
-            background: #1a1a1a;
-            color: #f0f0f0;
-            border-radius: 12px;
-            padding: 32px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
-        .cuentas-header {
-            text-align: center;
-            font-size: 1.5rem;
-            margin-bottom: 24px;
-        }
-        .cuentas-list {
-            font-size: 1rem;
-            color: #c9c9c9;
+
+        .gold-shadow {
+            box-shadow: 0 4px 6px rgba(212, 175, 55, 0.3);
         }
     </style>
 </head>
 <body class="bg-gray-900 flex justify-center items-center min-h-screen">
-    <div id="cuentasContainer" class="cuentas-container"> 
-        <h2 class="cuentas-header">Cuentas Registradas</h2>
-        <div id="cuentasLista" class="cuentas-list"></div>
+    <div class="bg-gray-900 p-8 rounded-lg shadow-lg w-96 gold-shadow">
+        <div class="flex justify-center mb-6">
+            <button id="loginTab" class="w-1/2 py-2 bg-black text-white border-2 border-gold rounded-t-lg focus:outline-none hover:bg-gray-800">Iniciar sesión</button>
+            <button id="registerTab" class="w-1/2 py-2 bg-gray-800 text-white border-2 border-gold rounded-t-lg focus:outline-none hover:bg-gray-700">Registrarse</button>
+        </div>
+        <div id="loginForm">
+            <h2 class="text-2xl font-semibold mb-4 text-center gold">Iniciar sesión</h2>
+            <form id="login">
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-300">Número de celular</label>
+                    <input type="text" id="loginPhone" class="w-full p-3 border border-gray-500 rounded-lg mt-1 bg-gray-700 text-white placeholder-gray-300 focus:ring-2 focus:ring-gold" placeholder="Ingresa tu número" required>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-300">Contraseña</label>
+                    <input type="password" id="loginPassword" class="w-full p-3 border border-gray-500 rounded-lg mt-1 bg-gray-700 text-white placeholder-gray-300 focus:ring-2 focus:ring-gold" placeholder="Ingresa tu contraseña" required>
+                </div>
+                <button type="submit" class="w-full py-3 bg-gold text-black rounded-lg hover:bg-gold-700">Iniciar sesión</button>
+            </form>
+            <p class="mt-4 text-center text-sm text-gray-300">¿No tienes cuenta? <a href="#" class="text-gold" id="toRegister">Regístrate aquí</a></p>
+            <div id="loginError" class="text-red-500 text-center mt-2 hidden">Número o contraseña incorrectos.</div>
+        </div>
+        <div id="registerForm" class="hidden">
+            <h2 class="text-2xl font-semibold mb-4 text-center gold">Registrarse</h2>
+            <form id="register">
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-300">Número de celular</label>
+                    <input type="text" id="registerPhone" class="w-full p-3 border border-gray-500 rounded-lg mt-1 bg-gray-700 text-white placeholder-gray-300 focus:ring-2 focus:ring-gold" placeholder="Ingresa tu número" required>
+                    <div id="phoneError" class="text-red-500 text-sm hidden">El número debe tener entre 10 y 13 dígitos y contener solo números.</div>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-300">Nombre de usuario</label>
+                    <input type="text" id="registerUsername" class="w-full p-3 border border-gray-500 rounded-lg mt-1 bg-gray-700 text-white placeholder-gray-300 focus:ring-2 focus:ring-gold" placeholder="Elige un nombre de usuario" required>
+                    <div id="usernameError" class="text-red-500 text-sm hidden">El nombre de usuario debe tener al menos 4 palabras y 2 números.</div>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-300">Contraseña de inicio</label>
+                    <input type="password" id="registerPassword" class="w-full p-3 border border-gray-500 rounded-lg mt-1 bg-gray-700 text-white placeholder-gray-300 focus:ring-2 focus:ring-gold" placeholder="Crea una contraseña" required>
+                    <div id="passwordError" class="text-red-500 text-sm hidden">La contraseña debe tener al menos 4 palabras y 2 números.</div>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-300">Contraseña de retiro de fondo</label>
+                    <input type="password" id="withdrawPassword" class="w-full p-3 border border-gray-500 rounded-lg mt-1 bg-gray-700 text-white placeholder-gray-300 focus:ring-2 focus:ring-gold" placeholder="Crea una contraseña de retiro" required>
+                    <div id="withdrawPasswordError" class="text-red-500 text-sm hidden">La contraseña de retiro debe tener al menos 4 palabras y 2 números.</div>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-300">Código de verificación:</label>
+                    <input type="text" id="verificationCode" class="w-full p-3 border border-gray-500 rounded-lg mt-1 bg-gray-700 text-white" value="558013" disabled>
+                </div>
+                <button type="submit" class="w-full py-3 bg-gold text-black rounded-lg hover:bg-gold-700">Registrarse</button>
+            </form>
+            <p class="mt-4 text-center text-sm text-gray-300">¿Ya tienes cuenta? <a href="#" class="text-gold" id="toLogin">Inicia sesión aquí</a></p>
+            <div id="registerError" class="text-red-500 text-center mt-2 hidden"></div>
+        </div>
     </div>
-    <script src="NM.js" defer></script>
-    <script src="TARO.js" defer></script>
-    <script src="Datos.js" defer></script>
-    <script src="asa.js" defer></script>
+
+    <!-- Firebase configuration and script -->
+    <script>
+        // Configuración de Firebase
+        const firebaseConfig = {
+            apiKey: "TU_API_KEY",
+            authDomain: "TU_AUTH_DOMAIN",
+            projectId: "TU_PROJECT_ID",
+            storageBucket: "TU_STORAGE_BUCKET",
+            messagingSenderId: "TU_MESSAGING_SENDER_ID",
+            appId: "TU_APP_ID",
+            measurementId: "TU_MEASUREMENT_ID"
+        };
+
+        // Inicializa Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // Aquí puedes agregar tu código de inicio de sesión y registro
+    </script>
+
+    <script src="Registro.js" defer></script>
+    <script src="login.js" defer></script>
 </body>
 </html>
