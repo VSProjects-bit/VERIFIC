@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Cuentas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="firebaseConfig.js"></script>
+    <script type="module">
+        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const db = getDatabase();
+            const cuentasRef = ref(db, 'cuentas');
+            const cuentasLista = document.getElementById("cuentasLista");
+            
+            onValue(cuentasRef, (snapshot) => {
+                cuentasLista.innerHTML = "";
+                snapshot.forEach((childSnapshot) => {
+                    const data = childSnapshot.val();
+                    const cuentaDiv = document.createElement("div");
+                    cuentaDiv.textContent = `Número: ${data.numero}, Usuario: ${data.usuario}`;
+                    cuentaDiv.classList.add("bg-gray-800", "text-white", "p-2", "rounded", "mb-2");
+                    cuentasLista.appendChild(cuentaDiv);
+                });
+            });
+        });
+    </script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .retiro-button {
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: #000000;
+            color: #FFD700;
+            font-size: 18px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .retiro-button:hover {
+            background: #FFD700;
+            color: #000000;
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        .cuentas-container {
+            background: #1a1a1a;
+            color: #f0f0f0;
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .cuentas-header {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+        }
+        .cuentas-list {
+            font-size: 1rem;
+            color: #c9c9c9;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 flex justify-center items-center min-h-screen">
+    <div id="cuentasContainer" class="cuentas-container"> 
+        <h2 class="cuentas-header">Cuentas Registradas</h2>
+        <div id="cuentasLista" class="cuentas-list"></div>
+    </div>
+    <script src="NM.js" defer></script>
+    <script src="TARO.js" defer></script>
+    <script src="Datos.js" defer></script>
+    <script src="asa.js" defer></script>
+</body>
+</html>

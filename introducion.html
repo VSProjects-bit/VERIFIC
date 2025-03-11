@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducción</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes pulsar {
+            0% {
+                transform: scale(1); 
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1); 
+            }
+        }
+        .pulsante {
+            animation: pulsar 1s infinite; 
+        }
+    </style> 
+   <style>
+    .button-container {
+      display: flex;
+      justify-content: space-evenly; 
+      padding: 10px; 
+    }
+    button {
+      height: 40px;
+      margin: 5px;
+      width: 100px;
+      background: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      font-family: Consolas, Courier New, monospace;
+      border: solid #404c5d 1px;
+      font-size: 14px;
+      color: rgb(161, 161, 161);
+      -webkit-transition: 500ms;
+      transition: 500ms;
+      border-radius: 5px;
+      background: linear-gradient(145deg, #2e2d2d, #212121);
+      -webkit-box-shadow: -1px -5px 15px #41465b, 5px 5px 15px #41465b,
+        inset 5px 5px 10px #212121, inset -5px -5px 10px #212121;
+        box-shadow: 0 0 10px rgba(0, 255, 255, 0.8),
+                        0 0 40px rgba(28, 29, 29, 0.6),
+                        0 0 80px rgba(30, 31, 31, 0.4);
+    }
+    button:hover {
+      -webkit-box-shadow: 1px 1px 13px #20232e, -1px -1px 13px #545b78;
+      box-shadow: 1px 1px 13px #20232e, -1px -1px 13px #545b78;
+      color: #d6d6d6;
+      -webkit-transition: 500ms;
+      transition: 500ms;
+    }
+    button:active {
+      -webkit-box-shadow: 1px 1px 13px #20232e, -1px -1px 33px #545b78;
+      box-shadow: 1px 1px 13px #20232e, -1px -1px 33px #545b78;
+      color: #d6d6d6;
+      -webkit-transition: 100ms;
+      transition: 100ms;
+    }
+    .link-button {
+      display: inline-block;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      text-align: center;
+      text-decoration: none;
+      font-family: Consolas, Courier New, monospace;
+      font-size: 14px;
+    }
+  </style> 
+</head>
+<body class="bg-gray-100 flex flex-col items-center justify-center h-screen">
+    <header class="bg-black text-yellow-500 p-6 w-full text-center">
+        <h1 class="text-lg font-bold glowing-text">introducción</h1>
+
+<style>
+@keyframes yellowGradient {
+    0% { color: #fae104; }  /* Amarillo muy claro */
+    25% { color: #FFEB3B; } /* Amarillo claro */
+    50% { color: #FFC107; } /* Amarillo medio */
+    75% { color: #FF9800; } /* Amarillo fuerte (tirando a dorado) */
+    100% { color: #ffe600; } /* Vuelve al inicio */
+}
+.glowing-text {
+    animation: yellowGradient 4s infinite ease-in-out; /* Transición suave */
+}
+</style>
+    </header>
+    <section class="bg-black p-4 rounded shadow-md w-80 mt-1 text-center overflow-y-auto max-h-[6000px] text-white">
+        <div class="mb-6">
+            <p class="text-white font-bold text-lg mb-2 pulsante">Quiénes somos:</p>
+            <p class="text-white">
+                V&S Projects S.A. de C.V. <br>
+                Somos una plataforma de innovación de productos de terceros que ofrece soluciones exclusivas a nuestros suscriptores. 
+                Nuestra misión es brindar acceso a productos innovadores y servicios de alta calidad, a través de un modelo de suscripción que te permite ganar comisiones mientras disfrutas de beneficios únicos.
+            </p>
+        </div>
+        <div class="mb-6">
+            <p class="text-white font-bold text-lg mb-2 pulsante text-white">Modelos de suscripción:</p>
+            <p class="text-white mb-4 text-white">Actualmente ofrecemos tres tipos de suscripción:</p>
+            <ul class="text-left text-white">
+                <li class="mb-2">
+                    <span class="font-semibold text-white">Estandar:</span> Acceso a una selección básica de productos innovadores con comisiones estándar.
+                </li>
+                <li class="mb-2">
+                    <span class="font-semibold text-white">Premium:</span> Beneficios adicionales y acceso exclusivo a productos de alta gama, junto con mayores comisiones.
+                </li>
+                <li class="mb-2">
+                    <span class="font-semibold text-white">Gold:</span> La mejor opción para quienes desean maximizar sus ganancias, con acceso completo a todos los productos y comisiones premium.
+                </li>
+            </ul>
+        </div>
+        <div class="mb-6">
+            <p class="text-white font-bold text-lg mb-2 pulsante">Expansión internacional:</p>
+            <p class="text-white mb-4">Actualmente, estamos en 4 países:</p>
+            <ul class="text-left text-white">
+                <li class="mb-2">
+                    <span class="text-red-500">Mé</span><span class="text-white">xi</span><span class="text-green-500">co</span>
+                </li>
+                <li class="mb-2">
+                    <span class="text-yellow-500">Co</span><span class="text-blue-600">lom</span><span class="text-red-600">bia</span>
+                </li>
+                <li class="mb-2">
+                    <span class="text-red-600">Es</span><span class="text-yellow-500">pa</span><span class="text-red-600">ña</span>
+                </li>
+                <li class="mb-2">
+                    <span class="text-blue-500">Arg</span><span class="text-white">ent</span><span class="text-blue-500">ina</span>
+                </li> 
+            </ul>
+            <p class="text-gray-700 mb-4 text-white">
+                Próximamente, ampliaremos nuestra presencia en más mercados, con hasta 9 suscripciones de pago disponibles.
+            </p>
+        </div>
+        <div class="mb-6">
+            <p class="text-white font-bold text-lg mb-2 pulsante">Gracias</p>
+            <p class="text-white mb-4">
+                En V&s Projects S.A. de C.V., creemos en el poder de la innovación para transformar vidas y negocios. ¡Estamos emocionados de que formes parte de nuestra comunidad!
+                
+            </p>
+            <div class="button-container">
+                <button>
+                    <a href="Portada.html" class="link-button">Volver</a>
+                  </button>
+                </div>
+        </div>
+    </section>
+</body>
+</html>

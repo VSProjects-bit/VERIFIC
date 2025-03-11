@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mía</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white flex flex-col min-h-screen">
+    <div class="bg-gray-900 p-6 text-center rounded-xl shadow-xl max-w-sm mx-auto text-white border border-gray-700">
+        <h2 class="text-2xl font-bold mb-4"> Información del Usuario</h2>
+        <div class="space-y-2">
+            <p class="text-lg font-medium flex items-center justify-center">
+                📱 <strong class="ml-2">Número de celular:</strong> <span id="userPhone" class="ml-1 font-light"></span>
+            </p>
+            <p class="text-lg font-medium flex items-center justify-center">
+                👤 <strong class="ml-2">Usuario:</strong> <span id="userName" class="ml-1 font-light"></span>
+            </p>
+        </div>
+    </div>
+    
+    <div class="flex-1 flex flex-col items-center justify-center">
+        <div class="grid grid-cols-3 gap-6 text-center">
+            <div class="flex flex-col items-center">
+                <span class="text-2xl">💰</span>
+                <a href="Recarga.html" class="text-lg">Recargar</a>
+            </div>
+            <div class="flex flex-col items-center">
+                <span class="text-2xl">💳</span>
+                <a href="RetiroM.html" class="text-lg">Retirar</a>
+            </div>
+            <div class="flex flex-col items-center">
+                <span class="text-2xl">🏦</span>
+                <a href="Tarjeta.html" class="text-lg">Banco</a>
+            </div>
+        </div>
+        <div class="grid grid-cols-2 gap-6 text-center mt-6">
+            <div class="flex flex-col items-center">
+                <span class="text-2xl">📄</span>
+                <a href="javascript:void(0);" class="text-lg" id="facturaLink">Factura</a>
+            </div>
+           
+            <div id="facturaModal" class="hidden fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50">
+                <div class="bg-black text-white p-8 rounded-lg text-center animate-shake">
+                    <h2 class="text-2xl font-bold">Generando Factura...</h2>
+                    <p class="mt-4">Esta opción no la tienes activada. Comunicate con tu supervisor para activarla.</p>
+                </div>
+            </div>
+            
+            <style>
+
+                @keyframes shake {
+                    0% { transform: translateX(0); }
+                    25% { transform: translateX(-10px); }
+                    50% { transform: translateX(10px); }
+                    75% { transform: translateX(-10px); }
+                    100% { transform: translateX(0); }
+                }
+            
+                .animate-shake {
+                    animation: shake 0.5s ease-in-out;
+                }
+            </style>
+            
+            <script src="LK.js" defer></script>
+            
+            <div class="flex flex-col items-center">
+                <span class="text-2xl">⬇️</span>
+                <a href="QUE ES.html" class="text-lg">¿V&s es?</a>
+            </div>
+        </div>
+    </div>
+    <div class="bg-black p-6">
+        <ul class="space-y-4">
+            <li>🔒 <a href="carta.html">Normas de trabajo</a></li>
+            <li>📃 <a href="Reg Rec.html">Registro de recarga</a></li>
+            <li>📜 <a href="Retiros Exitosos.html">Registros de retiro</a></li>
+            <li>🎧 <a href="#" onclick="mostrarVentana()">Servicio al cliente</a></li>
+            <div id="ventanaEmergente" style="
+                display: none;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) scale(0.8);
+                background: white;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
+                text-align: center;
+                width: 300px;
+                font-family: Arial, sans-serif;
+                z-index: 1000;
+                color: black;
+                opacity: 0;
+                transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+            ">
+                <p id="mensaje" style="
+                    font-size: 20px;
+                    font-weight: bold;
+                    margin-bottom: 15px;
+                    color: black;
+                    animation: vibrar 0.5s ease-in-out infinite alternate;
+                ">
+                    Comunícate con tu supervisor 
+                </p>
+                <p style="
+        font-size: 12px;
+        color: rgb(0, 0, 0);
+        margin-bottom: 15px;
+    ">
+       Horario de atención: Lunes a domingo, de 8:30 a.m. a 9:00 p.m.
+    </p>
+                <button onclick="cerrarVentana()" style="
+                    background-color: red;
+                    color: white;
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    font-size: 16px;
+                    transition: background 0.3s, transform 0.2s;
+                " onmouseover="this.style.background='darkred'; this.style.transform='scale(1.1)';"
+                   onmouseout="this.style.background='red'; this.style.transform='scale(1)';">
+                    Cerrar
+                </button>
+            </div>
+            <div id="fondoOscuro" style="
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 999;
+            "></div>
+            <script src="MSJ.js" defer></script>
+            <style>
+            @keyframes vibrar {
+                0% { transform: translateX(-2px); }
+                100% { transform: translateX(2px); }
+            }
+            </style>
+            <li>⚡ <a href="index.html">Salir</a></li>
+        </ul>
+    </div>
+    <section class="p-2 bg-gray-900 shadow-md rounded mt-9">
+        <div class="flex flex-col items-center">
+        <h2 class="text-lg font-bold"></h2>
+    </section>
+    <script src="PH.js" defer></script>
+<footer class="fixed bottom-0 left-0 right-0 bg-black shadow-lg p-0 flex justify-between items-center text-white text-sm">
+    <a href="Portada.html" class="footer-link" id="portada">🏠 Portada</a>
+    <a href="Recarga.html" class="footer-link" id="recargar">💰 Recargar</a>
+    <a href="Tareas.html" class="footer-link" id="tareas">📋 Tareas</a>
+    <a href="Orden.html" class="footer-link" id="orden">📦 Orden</a>
+    <a href="mia.html" class="footer-link" id="mio">👤 Mío</a>
+</footer>
+<style>
+    footer {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 12px 0;
+        background: rgba(0, 0, 0, 0.95);
+        box-shadow: 0px -4px 10px rgba(255, 255, 255, 0.2);
+        border-top: 2px solid rgba(255, 255, 255, 0.2);
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: auto;
+        backdrop-filter: blur(10px);
+    }
+    .footer-link {
+        font-weight: bold;
+        padding: 12px;
+        flex-grow: 1;
+        text-align: center;
+        transition: all 0.3s ease-in-out;
+        position: relative;
+        color: white;
+        text-decoration: none;
+        opacity: 1;
+    }
+    .footer-link:hover {
+        transform: scale(1.1);
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    }
+    .active {
+        opacity: 0.5;
+        text-shadow: none;
+    }
+</style>
+<script src="PU.js" defer></script>>
+</body>
+</html>

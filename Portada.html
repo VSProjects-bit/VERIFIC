@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portada</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-black text-gray-dark">
+    <header class="bg-black text-white p-4 flex items-center">
+        <img src="https://media0.giphy.com/media/l3q2Ok1vk3K5BPX44/giphy.gif" alt="" class="w-6 h-6 mr-2">
+        <h1 class="text-lg font-bold flashing-text">
+            V<span class="ampersand">&</span>s Projects S.A de C.V
+          </h1>
+          <style>
+            .flashing-text {
+              display: inline-block;
+              font-size: 0.90rem; /* Tamaño de fuente más pequeño */
+              font-weight: bold;
+            }
+            .flashing-text .ampersand {
+              display: inline-block;
+              animation: pulse-ampersand 1s ease-in-out infinite;
+            }
+            @keyframes pulse-ampersand {
+              0% {
+                transform: scale(1); /* Tamaño normal */
+              }
+              50% {
+                transform: scale(1.5); /* Tamaño aumentado (efecto de pulsación) */
+              }
+              100% {
+                transform: scale(1); /* Regresa al tamaño original */
+              }
+            }
+          </style>
+<style>
+@keyframes goldToWhite {
+    0% { color: gold; }   
+    50% { color: white; }  
+    100% { color: gold; } 
+}
+.flashing-text {
+    animation: goldToWhite 4s infinite ease-in-out;
+}
+</style>        
+<style>
+    .button-container {
+      display: flex;
+      justify-content: space-evenly;
+      padding: 10px; 
+    }
+    button {
+      height: 40px;
+      margin: 5px;
+      width: 100px;
+      background: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      font-family: Consolas, Courier New, monospace;
+      border: solid #404c5d 1px;
+      font-size: 14px;
+      color: rgb(161, 161, 161);
+      -webkit-transition: 500ms;
+      transition: 500ms;
+      border-radius: 5px;
+      background: linear-gradient(145deg, #2e2d2d, #212121);
+      -webkit-box-shadow: -1px -5px 15px #41465b, 5px 5px 15px #41465b,
+        inset 5px 5px 10px #212121, inset -5px -5px 10px #212121;
+        box-shadow: 0 0 10px rgba(0, 255, 255, 0.8),
+                        0 0 40px rgba(28, 29, 29, 0.6),
+                        0 0 80px rgba(30, 31, 31, 0.4);
+    }
+    button:hover {
+      -webkit-box-shadow: 1px 1px 13px #20232e, -1px -1px 13px #545b78;
+      box-shadow: 1px 1px 13px #20232e, -1px -1px 13px #545b78;
+      color: #d6d6d6;
+      -webkit-transition: 500ms;
+      transition: 500ms;
+    }
+    button:active {
+      -webkit-box-shadow: 1px 1px 13px #20232e, -1px -1px 33px #545b78;
+      box-shadow: 1px 1px 13px #20232e, -1px -1px 33px #545b78;
+      color: #d6d6d6;
+      -webkit-transition: 100ms;
+      transition: 100ms;
+    }
+    .link-button {
+      display: inline-block;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      text-align: center;
+      text-decoration: none;
+      font-family: Consolas, Courier New, monospace;
+      font-size: 14px;
+    }
+  </style>     
+    </header>
+    <section class="relative">
+        <img src="https://scontent.fmex18-1.fna.fbcdn.net/v/t39.30808-6/481277418_700396928983622_4335836417173929743_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=100&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=U3EQF5FOYPcQ7kNvgH4lQj9&_nc_oc=AdgrW7ZDVG1phpaD5oPesM8H-isdsHTJKjQuHtsSJ1zUofP-cZVsbC44tQpzF37m6Gk&_nc_zt=23&_nc_ht=scontent.fmex18-1.fna&_nc_gid=A-6gG-X3SSFYjgPguyeyDlV&oh=00_AYEnppKb-VbGgeUS4-PpjoXMtZ4AqS_QWiG_i__KVN2-vg&oe=67D2E922" alt="" class="w-full">
+    </section>
+<div class="button-container">
+    <button>
+        <a href="introducion.html" class="link-button">Introducción</a>
+      </button>
+      <button>
+        <a href="Recarga.html" class=" link-button">Recargar</a>
+      </button>
+    <button>
+      <a href="Retiro.html" class="btn-orange link-button">Retiro</a>
+    </button>
+  </div>
+  <section class="p-4 bg-black shadow-md rounded mt-2 flex justify-center items-center min-h-[auto]">
+    <div class="flex flex-col w-full max-w-lg">
+        <div class="text-center mb-6">
+            <h2 class="text-3xl font-semibold text-white">Información Personal</h2>
+        </div>
+        <div class="flex flex-col items-center space-y-6 bg-gradient-to-r from-indigo-50 via-purple-50 to-indigo-100 p-8 rounded-3xl shadow-xl w-full">
+            <div class="flex justify-between w-full">
+                <p class="text-gray-600 text-lg font-medium">Ingresos Totales:</p>
+                <p class="text-2xl font-semibold text-teal-600">Mex$0.00</p>
+            </div>
+            <div class="flex justify-between w-full">
+                <p class="text-gray-600 text-lg font-medium">Ganancias de Hoy:</p>
+                <p class="text-2xl font-semibold text-teal-600" id="gananciasHoy">$0.00</p>
+            </div>            
+            <div class="flex justify-between w-full">
+                <p class="text-gray-600 text-lg font-medium">Saldo Disponible:</p>
+                <p class="text-2xl font-semibold text-teal-600" id="saldoDisponible">Mex$0.00</p>
+            </div>
+        </div>
+    </div>
+</section>
+    <section class="p-1 bg-black shadow-md rounded mt-1">
+        <div class="flex flex-col items-center">
+            <h2 class="text-3xl font-semibold rainbow-text mb-6">Suscripciones</h2>
+        </div>
+        <style>
+        @keyframes rainbow {
+            0% { color: red; }
+            16% { color: orange; }
+            33% { color: rgb(69, 156, 196); }
+            50% { color: green; }
+            66% { color: blue; }
+            83% { color: indigo; }
+            100% { color: violet; }
+        }
+        .rainbow-text {
+            animation: rainbow 3s infinite linear;
+        }
+        </style>
+<div class="relative w-full overflow-hidden mt-4">
+    <div id="scrollContainer" class="flex gap-6 overflow-x-auto whitespace-nowrap scroll-smooth px-8 py-4 mb-12">
+        <div id="card1" class="flex flex-col items-center justify-center min-w-[300px] bg-gray-100 shadow-lg rounded-xl p-6 h-[350px] border-4 border-red-600"
+        style="box-shadow: 0 4px 10px rgba(255, 0, 0, 0.4); padding: 16px;">
+       <img src="https://www.fonttr.com/yone/prev/estandar-b.jpg" width="130" height="190" class="rounded-full border-4 border-white shadow-lg">
+       <h3 class="mt-4 text-2xl font-semibold tracking-wider text-center" 
+           style="color: black; text-shadow: 0 0 5px #ff4500, 0 0 10px #ff4500, 0 0 15px #ff6347, 0 0 20px #ff6347; 
+           padding: 0 10px; word-wrap: break-word; overflow-wrap: break-word;">
+           Información.
+       </h3>
+       <p class="text-sm mt-2 text-gray-700" style="padding: 0 10px;">Oportunidad de inversión</p>
+       <p class="text-sm mt-2 text-gray-700" style="padding: 0 10px;">Suscripción Estándar: Plan basico</p>
+       <p class="text-sm mt-2 text-gray-700" style="padding: 0 10px;">Incorpora 12 tareas adicionales</p>
+       <p class="text-sm mt-2 text-gray-700" style="padding: 0 10px;">Ganancias estimadas: $150 - $200</p>
+       <p class="text-sm mt-2 text-gray-700" style="padding: 0 10px;">Inversión Requerida: $96</p>
+       <button class="bg-red-700 text-white px-5 py-2 rounded-lg shadow-lg hover:bg-red-800 hover:shadow-xl mt-4 transition-all" onclick="mostrarConfirmacion(1, 96, 8)">
+           Confirmar
+       </button>
+   </div>
+        <div id="card2" class="flex flex-col items-center justify-center min-w-[300px] p-6 h-[350px] border-4 border-indigo-600 rounded-3xl shadow-2xl bg-gradient-to-r from-indigo-600 to-indigo-500"
+        style="box-shadow: 0 5px 15px 0 #00b5d6;">
+    <img src="https://www.pay-tv-angebot.de/wp-content/uploads/2023/07/WOW_Premium_Logo_Bildlink.jpg" width="150" height="100" class="rounded-full border-4 border-white shadow-lg">
+    <h3 class="mt-4 text-3xl font-semibold text-purple-700 tracking-wider" 
+        style="text-shadow: 0 0 5px #00b5d6, 0 0 10px #00b5d6, 0 0 15px #00b5d6, 0 0 20px #00b5d6, 0 0 25px #00b5d6; 
+        padding: 0 10px; word-wrap: break-word; overflow-wrap: break-word;">
+        Información.
+    </h3>
+    <p class="text-sm mt-2 text-white opacity-90" style="padding: 0 10px;">Exclusiva inversión con alta rentabilidad</p>
+    <p class="text-sm mt-2 text-white opacity-90" style="padding: 0 10px;">Suscripción Premium: Plan unico</p>
+    <p class="text-sm mt-2 text-white opacity-90" style="padding: 0 10px;">Incorpora 22 tareas adicionales</p>
+    <p class="text-sm mt-2 text-white opacity-90" style="padding: 0 10px;">Ganancias estimadas: $450 - $520</p>
+    <p class="text-sm mt-2 text-white opacity-90" style="padding: 0 10px;">Inversión Requerida: $380</p>
+    <button class="bg-gradient-to-r to-yellow-400 text-white px-5 py-2 rounded-lg shadow-lg hover:shadow-xl mt-4 transition-all" onclick="mostrarConfirmacion(2, 380, 22)">
+        Confirmar
+    </button>
+</div>
+        <style>
+          @keyframes gradientBackground {
+            0% {
+              background: linear-gradient(45deg, #4b79a1, #283e51);
+            }
+            50% {
+              background: linear-gradient(45deg, #00c6ff, #0072ff);
+            }
+            100% {
+              background: linear-gradient(45deg, #4b79a1, #283e51);
+            }
+          }
+          .animate-gradient-bg {
+            animation: gradientBackground 15s ease infinite;
+          }
+        </style>
+        <div id="card3" class="flex flex-col items-center justify-center min-w-[300px] bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 shadow-xl rounded-xl p-6 h-[350px] border-4 border-yellow-700"
+     style="box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5), 0 5px 15px 0 #d4af37;">
+    <img src="https://3.bp.blogspot.com/-SD06HcBGJNM/V_kZs4a2xTI/AAAAAAAAAno/qkfsl6Oal9Ame09JuP5t86zMOAFx1n7gQCLcB/s1600/gold.jpg" width="150" height="100" class="rounded-full border-4 border-white shadow-lg">
+    <h3 class="mt-4 text-2xl font-semibold text-white tracking-widest fire-text" 
+        style="padding: 0 10px; word-wrap: break-word; overflow-wrap: break-word;">
+        Información.
+    </h3>
+    <p class="text-sm mt-2 text-white opacity-80" style="padding: 0 10px;">Exclusiva oportunidad de inversión</p>
+    <p class="text-sm mt-2 text-white opacity-80" style="padding: 0 10px;">Suscripción Gold: Plan Exclusivo</p>
+    <p class="text-sm mt-2 text-white opacity-80" style="padding: 0 10px;">Incorpora 32 tareas adicionales</p>
+    <p class="text-sm mt-2 text-white opacity-80" style="padding: 0 10px;">Ganancias estimadas: $1000 - $1200</p>
+    <p class="text-sm mt-2 text-white opacity-80" style="padding: 0 10px;">Inversión Requerida: $899</p>
+    <button class="bg-gradient-to-r from-yellow-500 to-yellow-700 text-white px-4 py-2 rounded-lg shadow-md hover:shadow-xl mt-2 transition-all" onclick="mostrarConfirmacion(3, 899, 32)">
+        Confirmar
+    </button>
+</div> 
+        <style>
+            @keyframes fireAnimation {
+                0% {
+                    text-shadow: 0 0 3px rgba(255, 165, 0, 0.7), 0 0 10px rgba(255, 165, 0, 0.5), 0 0 20px rgba(255, 165, 0, 0.3);
+                }
+                25% {
+                    text-shadow: 0 0 5px rgba(255, 69, 0, 0.8), 0 0 15px rgba(255, 69, 0, 0.6), 0 0 25px rgba(255, 69, 0, 0.4);
+                }
+                50% {
+                    text-shadow: 0 0 8px rgba(255, 0, 0, 0.7), 0 0 20px rgba(255, 0, 0, 0.5), 0 0 30px rgba(255, 0, 0, 0.3);
+                }
+                75% {
+                    text-shadow: 0 0 5px rgba(255, 165, 0, 0.8), 0 0 15px rgba(255, 165, 0, 0.6), 0 0 25px rgba(255, 165, 0, 0.4);
+                }
+                100% {
+                    text-shadow: 0 0 3px rgba(255, 165, 0, 0.7), 0 0 10px rgba(255, 165, 0, 0.5), 0 0 20px rgba(255, 165, 0, 0.3);
+                }
+            }
+            .fire-text {
+                animation: fireAnimation 1.5s infinite;
+                color: white;
+            }
+        </style>
+    </section>
+    <div id="confirmacionOverlay" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+        <div class="bg-white p-6 rounded-lg text-center">
+            <h3 class="text-xl font-bold mb-4">Aceptar Orden</h3>
+            <p class="text-sm mb-4">Los pedidos no se pueden saltar. Si no se completan, no se podrá retirar los fondos.</p>
+            <div class="flex justify-between mt-2">
+                <button id="aceptarBtn" class="bg-gray-500 text-green-600 px-4 py-2 rounded">Aceptar</button>
+                <button id="cancelarBtn" class="bg-red-500 text-red-500 px-4 py-2 rounded" onclick="cerrarConfirmacion()">Cancelar</button>
+            </div>
+            
+        </div>
+    </div>
+    <div id="ordenesEncontradasOverlay" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+        <div class="bg-white p-6 rounded-lg text-center">
+            <h3 class="text-xl font-bold mb-4">Órdenes Encontradas</h3>
+            <p class="text-sm mb-4">Se han encontrado órdenes disponibles.</p>
+        </div>
+    </div>
+    <div id="suscripcionActivaOverlay" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+        <div class="bg-white p-6 rounded-lg text-center">
+            <h3 class="text-xl font-bold mb-4">Ya tienes una suscripción activada</h3>
+            <p class="text-sm mb-4">No puedes activar otra suscripción.</p>
+        </div>
+    </div>
+    <div id="saldoInsuficienteOverlay" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+        <div class="bg-white p-6 rounded-lg text-center">
+            <h3 class="text-xl font-bold mb-4">Recargar saldo</h3>
+            <p class="text-sm mb-4">Tu saldo es insuficiente para activar esta suscripción.</p>
+        </div>
+    </div>
+<div id="suscripcionCompletadaOverlay" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+    <div class="bg-white p-6 rounded-lg text-center">
+        <h3 class="text-xl font-bold mb-4">Esta suscripción ya se completó</h3>
+    </div>
+</div>
+    <div id="confirmacionOverlay" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+        <div class="bg-white p-6 rounded-lg text-center">
+            <h3 class="text-xl font-bold mb-4">Aceptar Orden</h3>
+            <p class="text-sm mb-4">Los pedidos no se pueden saltar. Si no se completan, no se podrá retirar los fondos.</p>
+            <button id="aceptarBtn" class="bg-blue-500 text-white px-4 py-2 rounded mt-2">Aceptar</button>
+            <button id="cancelarBtn" class="bg-gray-300 text-black px-4 py-2 rounded mt-2" onclick="cerrarConfirmacion()">Cancelar</button>
+        </div>
+    </div>
+    <div id="ordenesEncontradasOverlay" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+        <div class="bg-white p-6 rounded-lg text-center">
+            <h3 class="text-xl font-bold mb-4">Órdenes Encontradas</h3>
+            <p class="text-sm mb-4">Se han encontrado órdenes disponibles.</p>
+        </div>
+    </div>
+    <div id="suscripcionActivaOverlay" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden opacity-0 transition-opacity duration-500 ease-in-out">
+        <div class="bg-white p-6 rounded-lg text-center">
+            <h3 class="text-xl font-bold mb-4 unique-title">Ya tienes una suscripción activada</h3>
+            <p class="text-sm mb-4 unique-description">No puedes activar otra suscripción.</p>
+        </div>
+    </div>
+    <div id="saldoInsuficienteOverlay" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+        <div class="bg-white p-6 rounded-lg text-center">
+            <h3 class="text-xl font-bold mb-4">Recargar saldo</h3>
+            <p class="text-sm mb-4">Tu saldo es insuficiente para activar esta suscripción.</p>
+        </div>
+    </div>  
+<div id="suscripcionCompletadaOverlay" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+    <div class="bg-white p-6 rounded-lg text-center">
+        <h3 class="text-xl font-bold mb-4">Esta suscripción ya se completó</h3>
+    </div>
+</div>
+<style>
+    #scrollContainer {
+        transition: transform 0.5s ease-in-out; 
+    }
+    .flex-col:hover {
+        transform: scale(1.05);
+        transition: transform 0.3s ease;
+    }
+</style>
+<script src="scroll.js" defer></script>
+<script src="TTA.js" defer></script>
+<footer class="fixed bottom-0 left-0 right-0 bg-black shadow-lg p-0 flex justify-between items-center text-white text-sm">
+    <a href="Portada.html" class="footer-link" id="portada">🏠 Portada</a>
+    <a href="Recarga.html" class="footer-link" id="recargar">💰 Recargar</a>
+    <a href="Tareas.html" class="footer-link" id="tareas">📋 Tareas</a>
+    <a href="Orden.html" class="footer-link" id="orden">📦 Orden</a>
+    <a href="mia.html" class="footer-link" id="mio">👤 Mío</a>
+</footer>
+<style>
+    footer {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 12px 0;
+        background: rgba(0, 0, 0, 0.95);
+        box-shadow: 0px -4px 10px rgba(255, 255, 255, 0.2);
+        border-top: 2px solid rgba(255, 255, 255, 0.2);
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: auto;
+        backdrop-filter: blur(10px);
+    }
+    .footer-link {
+        font-weight: bold;
+        padding: 12px;
+        flex-grow: 1;
+        text-align: center;
+        transition: all 0.3s ease-in-out;
+        position: relative;
+        color: white;
+        text-decoration: none;
+        opacity: 1;
+    }
+    .footer-link:hover {
+        transform: scale(1.1);
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    }
+    .active {
+        opacity: 0.5;
+        text-shadow: none;
+    }
+</style>
+<script src="PaginaActual.js" defer></script>
+<div class="flex flex-col items-center">
+    <h2 class="text-3xl font-semibold rainbow-text mb-6"></h2>
+</div>
+</body>
+</html>

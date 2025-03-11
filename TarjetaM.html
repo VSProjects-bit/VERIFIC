@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Tarjeta</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+        }
+        .container {
+            text-align: center;
+            width: 450px;
+            background: linear-gradient(135deg, #000000, #FFD700);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            transition: transform 0.5s ease;
+        }
+        .flip-card {
+            background-color: transparent;
+            width: 100%;
+            height: 250px;
+            perspective: 1000px;
+            margin-bottom: 30px;
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            border-radius: 10px;
+        }
+        .flip-card-front, .flip-card-back {
+            box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.2);
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            background-color: #FFFFFF;
+            padding: 20px;
+        }
+        .flip-card-back {
+            transform: rotateY(180deg);
+            background-color: #000000;
+            color: #FFD700;
+        }
+        .status {
+            font-size: 1.1em;
+            color: #FFD700;
+            margin-top: 10px;
+        }
+        input {
+            width: 100%;
+            padding: 14px;
+            font-size: 16px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+            background-color: #333;
+            color: #fff;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        input::placeholder {
+            color: #AAA;
+        }
+        input:focus {
+            background-color: #444;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+            border-color: #FFD700;
+        }
+        .button {
+            width: 100%;
+            padding: 14px;
+            font-size: 16px;
+            background-color: #1E3A8A; 
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease-in-out;
+            margin-top: 20px;
+        }
+        .button:hover {
+            background-color: #0C2D68; 
+            transform: scale(1.05);
+        }
+        .button:active {
+            transform: scale(0.95);
+        }
+        .button:last-of-type {
+            margin-top: 15px;
+            background-color: #FF6B6B;
+        }
+        .button:last-of-type:hover {
+            background-color: #E74C3C;
+        }
+        .glowing-text {
+            animation: yellowGradient 4s infinite ease-in-out;
+        }
+        @keyframes yellowGradient {
+            0% { color: #ff4800; }
+            50% { color: #bd361f; }
+            100% { color: #884d32; }
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            text-align: center;
+        }
+        .modal-content img {
+            max-width: 100%;
+            height: auto;
+        }
+        .modal-content .message {
+            font-size: 1.2em;
+            margin-top: 20px;
+            color: #000000;
+            text-align: center;
+        }    
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="glowing-text" style="margin-bottom: 20px;">Agregar Tarjeta</h1>
+        </header>
+        <style>
+            .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 15%;
+    height: 15%; 
+    max-width: 250px;
+    text-align: center;
+    border-radius: 25px;
+}
+.modal-content img {
+    width: 80%;
+    max-width: 150px; 
+    height: auto;
+}
+        </style>
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <label for="banco" style="font-size: 1.1em; color: #333;">Banco:</label>
+                    <select id="banco" style="width: 100%; padding: 14px; font-size: 16px; margin-bottom: 15px; border-radius: 8px; border: none; outline: none; background-color: #333; color: #fff;">
+                        <option value="Seleccionar Banco" selected>Seleccionar Banco</option>
+                        <option value="BBVA">BBVA Bancomer</option>
+                        <option value="BanCoppel">BanCoppel</option>
+                        <option value="NU">NU</option>
+                        <option value="Klar">Klar</option>
+                        <option value="Santander">Santander</option>
+                        <option value="HSBC México">HSBC México</option>
+                        <option value="Scotiabank">Scotiabank</option>
+                        <option value="Banorte">Banorte</option>
+                        <option value="Citibanamex">Citibanamex</option>
+                        <option value="Banco Azteca">Banco Azteca</option>
+                        <option value="Inbursa">Inbursa</option>
+                        <option value="STP">STP</option>
+                    </select>
+                    <label for="cuenta" style="font-size: 1.1em; color: #333; margin-bottom: -25px;">
+                        Número de Cuenta: 
+                        <span id="tipoCuenta" style="font-size: 1.1em; color: #555;"></span>
+                    </label>
+                    <br>
+                    <input type="text" id="cuenta" placeholder="1234 5678 9012 3456" oninput="formatearCuenta()" maxlength="23" style="font-size: 1.1em; display: block; margin-top: 5px;">
+                    <label for="nombre" style="font-size: 1.1em; color: #333;">Nombre:</label>
+                    <input type="text" id="nombre" placeholder="Tu Nombre">
+                </div>
+                <div class="flip-card-back">
+                    <p class="status">Protección Activada</p>
+                    <p class="status">Solo se usa para realizar pagos.</p>
+                </div>
+            </div>
+        </div>
+        <button class="button" onclick="guardarTarjeta()">Guardar Tarjeta</button>
+        <button class="button" id="regresar" onclick="window.location.href='RetiroM.html'" style="border-radius: 12px; padding: 5px 12px; font-size: 14px; width: 100px; background-color: rgb(0, 0, 0); color: white;">🏠 Volver</button>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="cerrarModal()">&times;</span>
+                <img src="https://static.wixstatic.com/media/37783c_3253fc98d44a4ae88a3c6ee4f8eebca3~mv2.gif" alt="Guardado" /> 
+                <div class="message">¡Tarjeta guardada exitosamente!</div>
+            </div>
+        </div>
+        <div id="myModalAdvertencia" class="modal">
+            <div class="modal-content">
+                <img src="https://cdn.dribbble.com/users/2469324/screenshots/6538803/comp_3.gif" 
+                     alt="Advertencia" 
+                     style="width: 80px; height: 80px; margin-bottom: 15px;">
+                <div class="message" style="font-size: 1.2em; color: #ff0000; margin-top: 10px;">
+                    ¡Por favor, llena todos los campos!
+                </div>
+            </div>
+        </div>
+        <script src="ADV.js" defer></script>
+        <style>
+            .modal-content {
+                background-color: #fefefe;
+                margin: auto;
+                padding: 20px;
+                border: 1px solid #888;
+                width: 250px; 
+                height: 250px; 
+                max-width: 250px; 
+                text-align: center;
+                border-radius: 25px;
+            }
+        </style>
+        <script src="NUM.js" defer></script>
+        <script src="MOD.js" defer></script>
+    </div>
+</body>
+</html>

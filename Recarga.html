@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recargar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 flex flex-col items-center h-screen justify-start">
+    <header class="bg-black text-yellow-500 p-6 w-full text-center">
+        <h1 class="text-lg font-bold glowing-text">Recargar Balance</h1>
+<style>
+@keyframes yellowGradient {
+    0% { color: #fae104; }  
+    25% { color: #FFEB3B; } 
+    50% { color: #FFC107; }
+    75% { color: #FF9800; } 
+    100% { color: #ffe600; } 
+}
+.glowing-text {
+    animation: yellowGradient 4s infinite ease-in-out;
+}
+</style>
+<style>
+    .button-container {
+      display: flex;
+      justify-content: space-evenly; 
+      padding: 10px;
+    }
+    button {
+      height: 40px;
+      margin: 5px;
+      width: 100px;
+      background: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      font-family: Consolas, Courier New, monospace;
+      border: solid #404c5d 1px;
+      font-size: 14px;
+      color: rgb(161, 161, 161);
+      -webkit-transition: 500ms;
+      transition: 500ms;
+      border-radius: 5px;
+      background: linear-gradient(145deg, #2e2d2d, #212121);
+      -webkit-box-shadow: -1px -5px 15px #41465b, 5px 5px 15px #41465b,
+        inset 5px 5px 10px #212121, inset -5px -5px 10px #212121;
+        box-shadow: 0 0 10px rgba(0, 255, 255, 0.8),
+                        0 0 40px rgba(0, 0, 0, 0.6),
+                        0 0 80px rgba(0, 0, 0, 0.4);
+    }
+    button:hover {
+      -webkit-box-shadow: 1px 1px 13px #20232e, -1px -1px 13px #545b78;
+      box-shadow: 1px 1px 13px #20232e, -1px -1px 13px #545b78;
+      color: #d6d6d6;
+      -webkit-transition: 500ms;
+      transition: 500ms;
+    }
+    button:active {
+      -webkit-box-shadow: 1px 1px 13px #20232e, -1px -1px 33px #545b78;
+      box-shadow: 1px 1px 13px #20232e, -1px -1px 33px #545b78;
+      color: #d6d6d6;
+      -webkit-transition: 100ms;
+      transition: 100ms;
+    }
+    .link-button {
+      display: inline-block;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      text-align: center;
+      text-decoration: none;
+      font-family: Consolas, Courier New, monospace;
+      font-size: 14px;
+    }
+  </style> 
+    </header>
+    <section class="bg-white p-2 rounded-xl shadow-2xl w-80 mt-3 text-center">
+        <h2 class="text-lg font-bold mb-4">Información de pago</h2>
+    </section>
+    <section class="bg-white p-6 rounded-xl shadow-2xl w-80 mt-0 text-left hover:scale-105 transition-transform duration-500 ease-in-out">
+        <p class="text-lg font-medium text-gray-800"><strong class="text-black underline decoration-4">Banco:</strong>STP</p>
+        <p class="text-lg font-medium text-gray-800"><strong class="text-black underline decoration-4">Concepto:</strong> Pago</p>
+        <p class="text-lg font-medium text-gray-800"><strong class="text-black underline decoration-4">Beneficiario:</strong> Cervantes Monica</p>
+        <p class="text-lg font-medium text-gray-800"><strong class="text-black underline decoration-4">Clabe:</strong> 661610008220489805</p>
+    </section>
+    <section class="bg-white p-4 rounded shadow-md w-80 mt-6 text-center">
+        <h2 class="text-lg font-bold mb-4">Por favor seleccione la cantidad</h2>
+        <select id="cantidad" class="w-full p-3 bg-gray-200 rounded shadow-md transition-all duration-300 ease-in-out focus:scale-105 focus:shadow-lg focus:bg-gray-300">
+            <option value="68">Mex$68</option>
+            <option value="380">Mex$380</option>
+            <option value="899">Mex$899</option>
+            <option value="custom">Otro (ingrese cantidad)</option>
+        </select>
+        <input id="customCantidad" type="number" placeholder="Ingresa tu cantidad" class="w-full p-3 bg-gray-200 rounded shadow-md mt-2 hidden" />
+        <script src="DDV.js" defer></script>
+        <style>
+        /* Efecto de aparición suave en opciones */
+        select option {
+            transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+        select:focus option:checked {
+            background-color: rgb(24, 23, 22);
+            color: black;
+        }
+        </style>
+    </section>
+    <button onclick="mostrarConfirmacion()" class="btn- btn-green text-white" style="margin-right: 10px; margin-bottom: 20px;">Generar orden</button>
+    <section class="bg-gray-900 p-4 rounded shadow-md w-80 mt-6 text-center">
+        </select>
+    <div id="confirmacion-modal" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 hidden">
+        <div class="bg-white p-6 rounded shadow-md w-80">
+            <p>Después de pagar, comunícate con tu supervisor.</p>
+            <div class="flex justify-between mt-4">
+                <button onclick="confirmarPago()" class="btn-neon btn-green text-green-500">Confirmar</button>
+                <button onclick="cerrarConfirmacion()" class="btn-neon btn-green text-red-500">Cancelar</button>
+            </div>
+       
+        </div>
+    </div>
+    <script src="LTT.js" defer></script>
+<section class="p-0 bg-white shadow-md rounded mt-9">
+    <div class="flex flex-col items-center">
+    <h2 class="text-lg font-bold"></h2>
+</section>
+<footer class="fixed bottom-0 left-0 right-0 bg-black shadow-lg p-0 flex justify-between items-center text-white text-sm">
+    <a href="Portada.html" class="footer-link" id="portada">🏠 Portada</a>
+    <a href="Recarga.html" class="footer-link" id="recargar">💰 Recargar</a>
+    <a href="Tareas.html" class="footer-link" id="tareas">📋 Tareas</a>
+    <a href="Orden.html" class="footer-link" id="orden">📦 Orden</a>
+    <a href="mia.html" class="footer-link" id="mio">👤 Mío</a>
+</footer>
+<style>
+    footer {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 12px 0;
+        background: rgba(0, 0, 0, 0.95);
+        box-shadow: 0px -4px 10px rgba(255, 255, 255, 0.2);
+        border-top: 2px solid rgba(255, 255, 255, 0.2);
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: auto;
+        backdrop-filter: blur(10px);
+    }
+    .footer-link {
+        font-weight: bold;
+        padding: 12px;
+        flex-grow: 1;
+        text-align: center;
+        transition: all 0.3s ease-in-out;
+        position: relative;
+        color: white;
+        text-decoration: none;
+        opacity: 1;
+    }
+    .footer-link:hover {
+        transform: scale(1.1);
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    }
+    .active {
+        opacity: 0.5;
+        text-shadow: none;
+    }
+</style>
+<script src="TP.js" defer></script>
+</body>
+</html>

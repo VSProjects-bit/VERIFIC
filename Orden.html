@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orden</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .modal {
+            transition: opacity 0.5s ease, transform 0.3s ease;
+        }
+        .modal-content {
+            transform: scale(0.8);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .modal.show {
+            opacity: 1;
+        }
+        .modal-content.show {
+            transform: scale(1);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <header class="bg-black text-white p-6 flex flex-col items-center rounded-lg shadow-lg">
+        <h1 class="text-3xl font-bold text-gradient bg-clip-text mb-4 animate__animated animate__fadeIn">Pedidos</h1>
+        <div class="flex w-full justify-between mt-1">
+            <button id="btnPedidosPendientes" class="bg-red-500 text-black px-2 py-1 rounded-lg shadow-lg transform transition-all hover:scale-105 hover:shadow-2xl hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-300">
+                Pedidos Pendientes
+            </button>
+            <button id="btnPedidosCompletados" class="bg-green-500 text-white px-2 py-1 rounded-lg shadow-lg transform transition-all hover:scale-105 hover:shadow-2xl hover:bg-green-400 focus:outline-none focus:ring-2 focus:ring-green-300">
+                Pedidos Completados
+            </button>
+        </div>
+    </header>
+    <style>
+        .text-gradient {
+            background: linear-gradient(90deg, rgba(0, 204, 255, 1) 0%, rgba(0, 255, 85, 1) 100%);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .animate__fadeIn {
+            animation: fadeIn 1s ease-out;
+        }
+        .transform:hover {
+            transform: scale(1.05);
+        }
+        .hover\:scale-105:hover {
+            scale: 1.05;
+        }
+        .focus\:outline-none:focus {
+            outline: none;
+        }
+    </style>
+    </header>
+    <section class="p-4">
+        <div id="pedidosPendientes" class="grid grid-cols-1 gap-4"></div>
+        <div id="pedidosCompletados" class="grid grid-cols-1 gap-4 hidden"></div>
+    </section>
+    <div id="modalSaldoInsuficiente" class="modal hidden fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+        <div id="modalContenido" class="modal-content bg-white p-6 rounded-lg shadow-lg">
+            <h2 class="text-red-500 text-2xl font-bold text-center" id="mensajeSaldoInsuficienteTitulo">Saldo Insuficiente</h2>
+            <p class="text-center mt-4" id="mensajeSaldoInsuficiente">Te faltan <b>Mex$0.00</b> para completar este pedido.</p>
+        </div>
+    </div>
+    <section class="p-2 bg-white shadow-md rounded mt-9">
+        <div class="flex flex-col items-center">
+        <h2 class="text-lg font-bold"></h2>
+    </section>
+    <script src="solic.js" defer></script>
+    <footer class="fixed bottom-0 left-0 right-0 bg-black shadow-lg p-0 flex justify-between items-center text-white text-sm">
+        <a href="Portada.html" class="footer-link" id="portada">🏠 Portada</a>
+        <a href="Recarga.html" class="footer-link" id="recargar">💰 Recargar</a>
+        <a href="Tareas.html" class="footer-link" id="tareas">📋 Tareas</a>
+        <a href="Orden.html" class="footer-link" id="orden">📦 Orden</a>
+        <a href="mia.html" class="footer-link" id="mio">👤 Mío</a>
+    </footer>
+    <style>
+        footer {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 12px 0;
+            background: rgba(0, 0, 0, 0.95);
+            box-shadow: 0px -4px 10px rgba(255, 255, 255, 0.2);
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: auto;
+            backdrop-filter: blur(10px);
+        }
+        .footer-link {
+            font-weight: bold;
+            padding: 12px;
+            flex-grow: 1;
+            text-align: center;
+            transition: all 0.3s ease-in-out;
+            position: relative;
+            color: white;
+            text-decoration: none;
+            opacity: 1;
+        }
+        .footer-link:hover {
+            transform: scale(1.1);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+        .active {
+            opacity: 0.5;
+            text-shadow: none;
+        }
+    </style>
+</body>
+</html>
